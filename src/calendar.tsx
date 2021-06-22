@@ -299,28 +299,7 @@ const Compliance = () => {
     <div>
       <div className="pl-2 mb-6">
         <p className="mb-2">Duration</p>
-
-        {/* <div>
-          <ReactHookFormCustomSelect name="duration" defaultValue="year" variant="outlined" control={control}>
-            <MenuItem value="year"> Monthly</MenuItem>
-            <MenuItem value="month">Weekly</MenuItem>
-          </ReactHookFormCustomSelect>
-        </div> */}
       </div>
-
-      {/* <p className="px-3 ">Duration</p>
-      <div className="grid grid-cols-1  mb-4">
-        <div className="px-1">
-          <Select variant="outlined" defaultValue={7} name="year">
-            <option className="pl-3 cursor-pointer hover:bg-gray-100 py-1" value={7}>
-              Monthly
-            </option>
-            <option className="pl-3 cursor-pointer hover:bg-gray-100 py-1" value={14}>
-              Yearly
-            </option>
-          </Select>
-        </div>
-      </div> */}
 
       <div className="bg-gray-50 rounded-3xl border border-gray-200 text-janttNavyBlue p-6">
         <p className="font-semibold text-xl md:text-2xl">Compliance Calendar</p>
