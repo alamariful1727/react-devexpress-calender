@@ -311,7 +311,7 @@ const AppointmentContent = withStyles(styles, { name: 'AppointmentContent' })(
       <Appointments.AppointmentContent {...restProps} data={data}>
         <div className={classes.container}>
           <div className={classes.text}>{data.title}</div>
-          <div className={classNames(classes.text, classes.content)}>{`Advisor: ${'Fahim'}`}</div>
+          <div className={classNames(classes.text, classes.content)}>{`Advisor: ${data.advisor}`}</div>
           <div className={classNames(classes.text, classes.content)}>{`Priority: ${priority}`}</div>
           <div className={classNames(classes.text, classes.content)}>{`Location: ${data.location}`}</div>
         </div>
