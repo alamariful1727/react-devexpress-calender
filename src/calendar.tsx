@@ -13,11 +13,12 @@ import {
   Resources,
   WeekView,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { withStyles, Theme, createStyles } from '@material-ui/core';
+import { withStyles, Theme, createStyles, Grid } from '@material-ui/core';
 import { blue, indigo, teal, yellow } from '@material-ui/core/colors';
 import Paper from '@material-ui/core/Paper';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { WithStyles } from '@material-ui/styles';
+import Room from '@material-ui/icons/Room';
 import classNames from 'clsx';
 
 const appointments = [
@@ -216,6 +217,7 @@ type AppointmentProps = Appointments.AppointmentProps & WithStyles<typeof styles
 type AppointmentContentProps = Appointments.AppointmentContentProps & WithStyles<typeof styles>;
 type TimeTableCellProps = MonthView.TimeTableCellProps & WithStyles<typeof styles>;
 type DayScaleCellProps = MonthView.DayScaleCellProps & WithStyles<typeof styles>;
+type ContentProps = Appointments.ContentProps & WithStyles<typeof styles>;
 
 const isWeekEnd = (date: Date): boolean => date.getDay() === 0 || date.getDay() === 6;
 
@@ -270,6 +272,21 @@ const AppointmentContent = withStyles(styles, { name: 'AppointmentContent' })(
   },
 );
 
+const Content = withStyles(styles, { name: 'Content' })(({ appointmentData, classes, ...restProps }: ContentProps) => {
+  return (
+    <AppointmentTooltip.Content {...restProps} appointmentData={}>
+      <Grid container alignItems="center">
+        <Grid item xs={2} className={classes.textCenter}>
+          <Room className={classes.icon} />
+        </Grid>
+        <Grid item xs={10}>
+          <span>{data.location}</span>
+        </Grid>
+      </Grid>
+    </AppointmentTooltip.Content>
+  );
+});
+
 type viewNameType = 'work-week' | 'Week' | 'Month' | 'Day';
 
 const Calendar = () => {
@@ -302,7 +319,7 @@ const Calendar = () => {
             <Appointments appointmentComponent={Appointment} appointmentContentComponent={AppointmentContent} />
             <Resources data={resources} />
 
-            <AppointmentTooltip showCloseButton />
+            <AppointmentTooltip showCloseButton contentComponent={Content} />
             <Toolbar />
             <DateNavigator />
             <TodayButton />
